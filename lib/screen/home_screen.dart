@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:beeflix2/models/movie_model.dart';
-import 'package:beeflix2/services/api_service.dart';
-import 'package:beeflix2/widgets/movie_widget.dart';
+import 'package:beeflix2/model/movie_model.dart';
+import 'package:beeflix2/service/api_service.dart';
+import 'package:beeflix2/widget/movie_widget.dart';
 
 const POPULAR = 'Popular Movies';
 const NOW = 'Now in Cinemas';
@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
     return FutureBuilder(
       future: future,
       builder: (context, snapshot) {
+        print('FutureBuilder for $movieTitle: ${snapshot.connectionState}, hasData: ${snapshot.hasData}');
         if (snapshot.hasData) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,9 +47,9 @@ class HomeScreen extends StatelessWidget {
                 child: Text(
                   movieTitle,
                   style: const TextStyle(
-                    color: Color(0xFF181818),
+                    color: Colors.black,
                     fontSize: 28,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -78,8 +79,8 @@ class HomeScreen extends StatelessWidget {
         var movie = snapshot.data![index];
         return Movie(
           title: movieTitle == POPULAR ? '' : movie.title,
-          backdropPath: movieTitle == POPULAR ? movie.backdropPath : '',
-          posterPath: movie.posterPath,
+          backdrop_path: movieTitle == POPULAR ? movie.backdrop_path : '',
+          poster_path: movie.poster_path,
           id: movie.id,
           moiveWidth: movieTitle == POPULAR ? 300 : 150,
         );

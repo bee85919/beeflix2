@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:beeflix2/screens/detail_screen.dart';
+import 'package:beeflix2/screen/detail_screen.dart';
 
 class Movie extends StatelessWidget {
-  final String title, backdropPath, posterPath;
+  final String title, backdrop_path, poster_path;
   final int id;
   final double moiveWidth;
-  final String baseUrl = "https://image.tmdb.org/t/p/w500";
+  final String image_base_url = "https://image.tmdb.org/t/p/w500";
 
   const Movie({
     super.key,
     required this.title,
-    required this.backdropPath,
-    required this.posterPath,
+    required this.backdrop_path,
+    required this.poster_path,
     required this.id,
     required this.moiveWidth,
   });
@@ -25,7 +25,7 @@ class Movie extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => DetailScreen(
               title: title,
-              posterPath: posterPath,
+              poster_path: poster_path,
               id: id,
             ),
           ),
@@ -49,9 +49,9 @@ class Movie extends StatelessWidget {
                 ],
               ),
               child: Image.network(
-                backdropPath == ''
-                    ? baseUrl + posterPath
-                    : baseUrl + backdropPath,
+                backdrop_path == ''
+                    ? image_base_url + poster_path
+                    : image_base_url + backdrop_path,
                 headers: const {
                   "User-Agent":
                       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",

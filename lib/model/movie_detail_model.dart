@@ -1,5 +1,5 @@
 class MovieDetailModel {
-  num id, voteAerage;
+  num id, vote_average;
   String title, overview;
   String genres;
 
@@ -8,19 +8,19 @@ class MovieDetailModel {
     required this.title,
     required this.genres,
     required this.overview,
-    required this.voteAerage,
+    required this.vote_average,
   });
 
-  factory MovieDetailModel.fromJson(Map<String, dynamic> jsonData) {
-    List<dynamic> genreData = jsonData['genres'];
-    String genres = genreData.map((genre) => genre['name']).join(', ');
+  factory MovieDetailModel.fromJson(Map<String, dynamic> json_data) {
+    List<dynamic> genre_data = json_data['genres'];
+    String genres = genre_data.map((genre) => genre['name']).join(', ');
 
     return MovieDetailModel(
-      id: jsonData['id'],
-      title: jsonData['title'],
+      id: json_data['id'],
+      title: json_data['title'],
       genres: genres,
-      overview: jsonData['overview'],
-      voteAerage: jsonData['vote_average'],
+      overview: json_data['overview'],
+      vote_average: json_data['vote_average'],
     );
   }
 }

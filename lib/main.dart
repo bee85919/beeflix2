@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:beeflix2/screens/home_screen.dart';
+import 'package:beeflix2/screen/home_screen.dart';
 
 void main() {
   runApp(const App());

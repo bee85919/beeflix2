@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:beeflix2/models/movie_detail_model.dart';
-import 'package:beeflix2/services/api_service.dart';
+import 'package:beeflix2/model/movie_detail_model.dart';
+import 'package:beeflix2/service/api_service.dart';
 
 class DetailScreen extends StatefulWidget {
-  final String title, posterPath;
+  final String title, poster_path;
   final num id;
-  final String baseUrl = "https://image.tmdb.org/t/p/w500";
+  final String base_url = "https://image.tmdb.org/t/p/w500";
 
   const DetailScreen({
     super.key,
     required this.title,
-    required this.posterPath,
+    required this.poster_path,
     required this.id,
   });
 
@@ -33,8 +33,8 @@ class _DetailScreenState extends State<DetailScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: NetworkImage(widget.baseUrl + widget.posterPath),
-          opacity: 0.4,
+          image: NetworkImage(widget.base_url + widget.poster_path),
+          opacity: 0.25,
         ),
       ),
       child: Scaffold(
@@ -61,17 +61,17 @@ class _DetailScreenState extends State<DetailScreen> {
                               style: const TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                             StarRating(
-                              rating: snapshot.data!.voteAerage,
+                              rating: snapshot.data!.vote_average,
                             ),
                             Text(
                               snapshot.data!.genres,
                               style: const TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                             const SizedBox(
@@ -82,7 +82,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
@@ -92,7 +92,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               snapshot.data!.overview,
                               style: const TextStyle(
                                 fontSize: 18,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ],
@@ -148,7 +148,7 @@ class StarRating extends StatelessWidget {
           rating.toStringAsFixed(1),
           style: const TextStyle(
             fontSize: 18,
-            color: Colors.white,
+            color: Colors.black,
           ),
         )
       ],
