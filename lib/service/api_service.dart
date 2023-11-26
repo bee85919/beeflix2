@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:beeflix2/model/movie_detail_model.dart';
@@ -19,7 +18,9 @@ class ApiSerivce {
     if (response.statusCode == 200) {
       final movies = jsonDecode(response.body);
       for (var movie in movies["results"]) {
-        movieInstances.add(MovieModel.fromJson(movie));
+        if (movie['backdrop_path'] != null) {
+          movieInstances.add(MovieModel.fromJson(movie));
+        }
       }
       return movieInstances;
     } else {
@@ -28,7 +29,7 @@ class ApiSerivce {
   }
 
   static Future<List<MovieModel>> getPopularMovies() async {
-    return getMoviesByKey(now_key);
+    return getMoviesByKey(popular_key);
   }
 
   static Future<List<MovieModel>> getMoviesNow() async {
